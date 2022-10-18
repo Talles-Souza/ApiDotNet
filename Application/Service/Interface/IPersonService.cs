@@ -9,7 +9,10 @@ namespace Application.Service.Interface
 {
     public interface IPersonService
     {
-        Task<ICollection<Person>> FindAll();
-        Task<Person> Create(Person person); 
+        Task<ResultService<Person>> Create(Person personDTO);
+        Task<ResultService<ICollection<Person>>> FindAll();
+        Task<ResultService<Person>> FindById(int id);
+        Task<ResultService<Person>> Update(Person personDTO);
+        Task<ResultService> Delete(int id);
     }
 }

@@ -13,6 +13,7 @@ namespace Domain.Repositories
         Task<ICollection<Person>> FindAll();
         Task<Person> FindById (int id);
         Task<Person> Update (Person person);
-        Task<Person> Delete (int id);
+        Task<bool> Delete(int id);
+
     }
 }

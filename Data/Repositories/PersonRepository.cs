@@ -21,7 +21,7 @@ namespace Data.Repositories
             try
             {
                 _context.Add(person);
-                await _context.SaveChangesAsync();  
+                await _context.SaveChangesAsync();
 
             }
             catch (Exception)
@@ -29,27 +29,44 @@ namespace Data.Repositories
 
                 throw;
             }
-           return person;
+            return person;
         }
 
-        public Task<Person> Delete(int id)
+        public async Task<bool> Delete(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                Person people = await _context.People.Where(p => p.Id == id)
+                                    .FirstOrDefaultAsync();
+                if (people == null) return false;
+                _context.People.Remove(people);
+                await _context.SaveChangesAsync();
+                return true;
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
         }
 
         public async Task<ICollection<Person>> FindAll()
         {
-           return await _context.People.ToListAsync();
+            List<Person> people = await _context.People.ToListAsync();
+            return people;
         }
 
-        public Task<Person> FindById(int id)
+        public async Task<Person> FindById(int id)
         {
-            throw new NotImplementedException();
+            Person person = await _context.People.FirstOrDefaultAsync(x => x.Id == id);
+            return person;
         }
 
-        public Task<Person> Update(Person person)
+        public async Task<Person> Update(Person person)
         {
-            throw new NotImplementedException();
+            _context.Update(person);
+            await _context.SaveChangesAsync();
+            return person;
         }
     }
 }

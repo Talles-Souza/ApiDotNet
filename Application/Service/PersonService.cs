@@ -15,13 +15,14 @@ namespace Application.Service
 
         public Task<Person> Create(Person person)
         {
-         //depois vou criiar a validação de dados
+         
          return _personRepository.Create(person); 
             
         }
 
         public async Task<ICollection<Person>> FindAll()
         {
+
             return await _personRepository.FindAll();
         }
     }

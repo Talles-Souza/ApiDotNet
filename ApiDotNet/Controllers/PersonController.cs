@@ -1,4 +1,5 @@
 ﻿using Application.Service.Interface;
+using Domain.Entities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -22,6 +23,13 @@ namespace ApiDotNet.Controllers
             var result = await _personService.FindAll();
                 return Ok(result);
 
+        }
+         [HttpPost]  
+        public async Task<ActionResult> Create([FromBody]Person person)
+        {
+            var result = await _personService.Create(person);
+            return Ok(result);
+            
         }
     }
 }

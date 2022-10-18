@@ -16,9 +16,25 @@ namespace Data.Repositories
             _context = context;
         }
 
-        public Person Create(Person person)
+        public async Task<Person> Create(Person person)
         {
-            return person;
+            try
+            {
+                _context.Add(person);
+                await _context.SaveChangesAsync();  
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+           return person;
+        }
+
+        public Task<Person> Delete(int id)
+        {
+            throw new NotImplementedException();
         }
 
         public async Task<ICollection<Person>> FindAll()
@@ -26,20 +42,14 @@ namespace Data.Repositories
            return await _context.People.ToListAsync();
         }
 
-        public Person FindById(int id)
+        public Task<Person> FindById(int id)
         {
             throw new NotImplementedException();
         }
 
-        public Person Update(Person person)
+        public Task<Person> Update(Person person)
         {
             throw new NotImplementedException();
         }
-
-        public Person Delete(int id)
-        {
-            throw new NotImplementedException();
-        }
-
     }
 }

@@ -10,5 +10,6 @@ namespace Application.Service.Interface
     public interface IPersonService
     {
         Task<ICollection<Person>> FindAll();
+        Task<Person> Create(Person person); 
     }
 }

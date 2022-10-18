@@ -20,6 +20,7 @@ namespace IoC
             services.AddScoped<IPersonRepository, PersonRepository>();
             return services;
         }
+
         public static IServiceCollection AddServices(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddScoped<IPersonService, PersonService>();

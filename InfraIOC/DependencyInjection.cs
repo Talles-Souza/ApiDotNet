@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Data.Repositories;
 using Domain.Repositories;
+using Application.Mapping;
 
 namespace IoC
 {
@@ -23,6 +24,7 @@ namespace IoC
 
         public static IServiceCollection AddServices(this IServiceCollection services, IConfiguration configuration)
         {
+            services.AddAutoMapper(typeof(DomainToDtoMapping));
             services.AddScoped<IPersonService, PersonService>();
             return services;
 

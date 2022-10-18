@@ -19,6 +19,19 @@ namespace Domain.Entities
         [Column("address")]
         public string Address { get; set; }
         [Column("gender")]
-        public string Gender { get; set; }    
+        public string Gender { get; set; }
+
+        public Person(int id, string firstName, string lastName, string address, string gender)
+        {
+            Id = id;
+            FirstName = firstName;
+            LastName = lastName;
+            Address = address;
+            Gender = gender;
+        }
+        public Person()
+        {
+
+        }
     }
 }

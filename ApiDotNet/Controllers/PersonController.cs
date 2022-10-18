@@ -17,19 +17,44 @@ namespace ApiDotNet.Controllers
             _personService = personService;
         }
 
+        [HttpPost]
+        public async Task<ActionResult> Create([FromBody] Person person)
+        {
+            var result = await _personService.Create(person);
+            if (result.IsSuccess) return Ok(result);
+            return BadRequest(result);
+        }
+
         [HttpGet]
         public async Task<ActionResult> FindByAll()
         {
             var result = await _personService.FindAll();
-                return Ok(result);
+            if (result.IsSuccess) return Ok(result);
+            return BadRequest(result);
 
         }
-         [HttpPost]  
-        public async Task<ActionResult> Create([FromBody]Person person)
+        [HttpGet("{id}")]
+        public async Task<ActionResult> FindById(int id)
         {
-            var result = await _personService.Create(person);
-            return Ok(result);
-            
+            var result = await _personService.FindById(id);
+            if (result.IsSuccess) return Ok(result);
+            return BadRequest(result);
+        }
+
+        [HttpPut]
+        public async Task<ActionResult> Update([FromBody] Person person)
+        {
+            var result = await _personService.Update(person);
+            if (result.IsSuccess) return Ok(result);
+            return BadRequest(result);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> Delete(int id)
+        {
+            var result = await _personService.Delete(id);
+            if (result.IsSuccess) return Ok(result);
+            return BadRequest(result);
         }
     }
 }

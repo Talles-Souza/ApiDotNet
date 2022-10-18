@@ -64,6 +64,8 @@ namespace Data.Repositories
 
         public async Task<Person> Update(Person person)
         {
+           // Person person2 = new Person();
+            //_context.Entry(person).CurrentValues.SetValues(person2);
             _context.Update(person);
             await _context.SaveChangesAsync();
             return person;

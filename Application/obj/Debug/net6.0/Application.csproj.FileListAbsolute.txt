@@ -10,3 +10,6 @@ C:\C#\DotNetCore\Application\obj\Debug\net6.0\Application.dll
 C:\C#\DotNetCore\Application\obj\Debug\net6.0\refint\Application.dll
 C:\C#\DotNetCore\Application\obj\Debug\net6.0\Application.pdb
 C:\C#\DotNetCore\Application\obj\Debug\net6.0\ref\Application.dll
+C:\C#\DotNetCore\Application\bin\Debug\net6.0\Domain.dll
+C:\C#\DotNetCore\Application\bin\Debug\net6.0\Domain.pdb
+C:\C#\DotNetCore\Application\obj\Debug\net6.0\Application.csproj.CopyComplete

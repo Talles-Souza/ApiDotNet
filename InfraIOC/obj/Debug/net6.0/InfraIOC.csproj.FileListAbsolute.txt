@@ -10,3 +10,10 @@ C:\C#\DotNetCore\InfraIOC\obj\Debug\net6.0\InfraIOC.dll
 C:\C#\DotNetCore\InfraIOC\obj\Debug\net6.0\refint\InfraIOC.dll
 C:\C#\DotNetCore\InfraIOC\obj\Debug\net6.0\InfraIOC.pdb
 C:\C#\DotNetCore\InfraIOC\obj\Debug\net6.0\ref\InfraIOC.dll
+C:\C#\DotNetCore\InfraIOC\bin\Debug\net6.0\Application.dll
+C:\C#\DotNetCore\InfraIOC\bin\Debug\net6.0\Data.dll
+C:\C#\DotNetCore\InfraIOC\bin\Debug\net6.0\Domain.dll
+C:\C#\DotNetCore\InfraIOC\bin\Debug\net6.0\Application.pdb
+C:\C#\DotNetCore\InfraIOC\bin\Debug\net6.0\Data.pdb
+C:\C#\DotNetCore\InfraIOC\bin\Debug\net6.0\Domain.pdb
+C:\C#\DotNetCore\InfraIOC\obj\Debug\net6.0\InfraIOC.csproj.CopyComplete

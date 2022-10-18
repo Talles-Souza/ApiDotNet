@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "9TSawoZjE0YoVxF1Zlj9lzhgCB+i76uWjWmr0IfZDDz+dWc5q6NRMB1YSnRVjyikEjklb9Sivr6SY8nBFyFmCg==",
+  "dgSpecHash": "iQRzzQ7U4NemkvMvuo78xmqRSAPaxE3zKSc2c6AU1AIGq7GdJLgVzFLcULjhz5+oGWAVMzM9GEK7nvIAu3rkoA==",
   "success": true,
   "projectFilePath": "C:\\C#\\DotNetCore\\Application\\Application.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\talles\\.nuget\\packages\\automapper\\12.0.0\\automapper.12.0.0.nupkg.sha512",
+    "C:\\Users\\talles\\.nuget\\packages\\fluentvalidation\\11.2.2\\fluentvalidation.11.2.2.nupkg.sha512",
+    "C:\\Users\\talles\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512"
+  ],
   "logs": []
 }

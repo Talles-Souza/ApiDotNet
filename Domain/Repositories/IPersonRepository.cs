@@ -10,7 +10,7 @@ namespace Domain.Repositories
     public interface IPersonRepository
     {
         Person Create (Person person);
-        List<Person> FindAll();
+        Task<ICollection<Person>> FindAll();
         Person FindById (int id);
         Person Update (Person person);
         Person Delete (int id);

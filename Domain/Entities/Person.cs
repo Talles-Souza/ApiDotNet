@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
@@ -13,12 +14,20 @@ namespace Domain.Entities
         [Column("id")]
         public int Id { get; set; }
         [Column("first_name")]
+        [Required]
+        [StringLength(150)]
         public string FirstName { get; set; }
         [Column("Last_name")]
+        [Required]
+        [StringLength(150)]
         public string LastName { get; set; }
         [Column("address")]
+        [Required]
+        [StringLength(150)]
         public string Address { get; set; }
         [Column("gender")]
+        [Required]
+        [StringLength(10)]
         public string Gender { get; set; }
 
         public Person(int id, string firstName, string lastName, string address, string gender)

@@ -66,3 +66,6 @@ C:\C#\DotNetCore\ApiDotNet\bin\Debug\net6.0\Serilog.Settings.Configuration.dll
 C:\C#\DotNetCore\ApiDotNet\bin\Debug\net6.0\Serilog.Sinks.Console.dll
 C:\C#\DotNetCore\ApiDotNet\bin\Debug\net6.0\Serilog.Sinks.Debug.dll
 C:\C#\DotNetCore\ApiDotNet\bin\Debug\net6.0\Serilog.Sinks.File.dll
+C:\C#\DotNetCore\ApiDotNet\bin\Debug\net6.0\Humanizer.dll
+C:\C#\DotNetCore\ApiDotNet\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\C#\DotNetCore\ApiDotNet\bin\Debug\net6.0\Swashbuckle.AspNetCore.Annotations.dll

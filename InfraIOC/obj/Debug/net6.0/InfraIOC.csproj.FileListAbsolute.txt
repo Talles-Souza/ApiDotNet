@@ -17,3 +17,5 @@ C:\C#\DotNetCore\InfraIOC\bin\Debug\net6.0\Application.pdb
 C:\C#\DotNetCore\InfraIOC\bin\Debug\net6.0\Data.pdb
 C:\C#\DotNetCore\InfraIOC\bin\Debug\net6.0\Domain.pdb
 C:\C#\DotNetCore\InfraIOC\obj\Debug\net6.0\InfraIOC.csproj.CopyComplete
+C:\C#\DotNetCore\InfraIOC\bin\Debug\net6.0\InfraIOC.runtimeconfig.json
+C:\C#\DotNetCore\InfraIOC\obj\Debug\net6.0\InfraIOC.genruntimeconfig.cache

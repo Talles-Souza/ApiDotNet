@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "h56NqSL9cYZHdhQiDqOo9lRJ6tcMKb8jUAk8RTMvGouL2IpO1AH+ME97FCulv/6RkuFXuRKqCr/jmQmv5TShIw==",
+  "dgSpecHash": "SWtIpeaLzvALaHz4amMyaFBG4OkoMNeh/tLZquu4NEUWte76SkOzHoATRcI7OuKK5tXjXnbzHSinPj1ejBxxHA==",
   "success": true,
   "projectFilePath": "C:\\C#\\DotNetCore\\Data\\Data.csproj",
   "expectedPackageFiles": [
@@ -11,7 +11,7 @@
     "C:\\Users\\talles\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\6.0.10\\microsoft.entityframeworkcore.analyzers.6.0.10.nupkg.sha512",
     "C:\\Users\\talles\\.nuget\\packages\\microsoft.entityframeworkcore.design\\6.0.10\\microsoft.entityframeworkcore.design.6.0.10.nupkg.sha512",
     "C:\\Users\\talles\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\6.0.10\\microsoft.entityframeworkcore.relational.6.0.10.nupkg.sha512",
-    "C:\\Users\\talles\\.nuget\\packages\\microsoft.entityframeworkcore.tools\\6.0.10\\microsoft.entityframeworkcore.tools.6.0.10.nupkg.sha512",
+    "C:\\Users\\talles\\.nuget\\packages\\microsoft.entityframeworkcore.tools\\6.0.9\\microsoft.entityframeworkcore.tools.6.0.9.nupkg.sha512",
     "C:\\Users\\talles\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
     "C:\\Users\\talles\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\6.0.0\\microsoft.extensions.caching.abstractions.6.0.0.nupkg.sha512",
     "C:\\Users\\talles\\.nuget\\packages\\microsoft.extensions.caching.memory\\6.0.1\\microsoft.extensions.caching.memory.6.0.1.nupkg.sha512",

@@ -28,10 +28,9 @@ namespace Domain.Entities
         [Column("gender")]
         [Required]
         [StringLength(10)]
-        public string Gender { get; set; }[Column("teste")]
-        [Required]
-        [StringLength(10)]
-        public string Teste { get; set; }
+        public string Gender { get; set; }
+
+     
 
         public Person(int id, string firstName, string lastName, string address, string gender)
         {

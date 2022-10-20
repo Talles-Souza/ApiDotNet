@@ -17,6 +17,7 @@ namespace Data.Context
         public MySqlContext(DbContextOptions<MySqlContext> options) : base(options) { }
 
         public DbSet<Person> People { get; set; }
+        public DbSet<Book> Books { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

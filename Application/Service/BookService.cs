@@ -35,25 +35,25 @@ namespace Application.Service
 
         public async Task<ResultService<ICollection<Book>>> FindAll()
         {
-            var people = await _personRepository.FindAll();
-            return ResultService.Ok<ICollection<Person>>(people);
+            var book = await _bookRepository.FindAll();
+            return ResultService.Ok<ICollection<Book>>(book);
         }
 
         public async Task<ResultService<Book>> FindById(int id)
         {
-            var person = await _personRepository.FindById(id);
-            if (person == null) return ResultService.Fail<Person>("Person not found");
-            return ResultService.Ok(person);
+            var book = await _bookRepository.FindById(id);
+            if (book == null) return ResultService.Fail<Book>("Book not found");
+            return ResultService.Ok(book);
         }
 
         public async Task<ResultService<Book>> Update(Book book)
         {
-            if (person == null) return (ResultService<Person>)ResultService.Fail("Person must be informed");
+            if (book == null) return (ResultService<Book>)ResultService.Fail("Book must be informed");
 
-            var persons = await _personRepository.FindById(person.Id);
-            if (persons == null) return (ResultService<Person>)ResultService.Fail("Person not found");
-            persons = _mapper.Map<Person, Person>(person, persons);
-            var data = await _personRepository.Update(persons);
+            var books = await _bookRepository.FindById(book.Id);
+            if (books == null) return (ResultService<Book>)ResultService.Fail("Book not found");
+            books = _mapper.Map<Book, Book>(book, books);
+            var data = await _bookRepository.Update(books);
             return ResultService.Ok(data);
         }
     }

@@ -9,6 +9,7 @@ namespace Application.Mapping
         public DomainToDtoMapping()
         {
             CreateMap<Person, Person>();
+            CreateMap<Book, Book>();
            
            
         }

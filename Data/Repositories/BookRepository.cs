@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Data.Repositories
 {
-    internal class BookRepository : IBookRepository
+    public class BookRepository : IBookRepository
     {
         private readonly MySqlContext _context;
 
@@ -65,9 +65,11 @@ namespace Data.Repositories
             return book;
         }
 
-        public Task<Book> Update(Book book)
+        public async Task<Book> Update(Book book)
         {
-            throw new NotImplementedException();
+            _context.Update(book);
+            await _context.SaveChangesAsync();
+            return book;
         }
     }
 }

@@ -1,5 +1,7 @@
-﻿using Domain.Entities;
+﻿using Data.Context;
+using Domain.Entities;
 using Domain.Repositories;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,24 +12,57 @@ namespace Data.Repositories
 {
     internal class BookRepository : IBookRepository
     {
-        public Task<Book> Create(Book book)
+        private readonly MySqlContext _context;
+
+        public BookRepository(MySqlContext context)
         {
-            throw new NotImplementedException();
+            _context = context;
         }
 
-        public Task<bool> Delete(int id)
+        public async Task<Book> Create(Book book)
         {
-            throw new NotImplementedException();
+            try
+            {
+                _context.Add(book);
+                await _context.SaveChangesAsync();
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            return book;
         }
 
-        public Task<ICollection<Book>> FindAll()
+        public async Task<bool> Delete(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                Book book = await _context.Books.Where(p => p.Id == id)
+                                    .FirstOrDefaultAsync();
+                if (book == null) return false;
+                _context.Books.Remove(book);
+                await _context.SaveChangesAsync();
+                return true;
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
         }
 
-        public Task<Book> FindById(int id)
+        public async Task<ICollection<Book>> FindAll()
         {
-            throw new NotImplementedException();
+            List<Book> book = await _context.Books.ToListAsync();
+            return book;
+        }
+
+        public async Task<Book> FindById(int id)
+        {
+            Book book = await _context.Books.FirstOrDefaultAsync(x => x.Id == id);
+            return book;
         }
 
         public Task<Book> Update(Book book)

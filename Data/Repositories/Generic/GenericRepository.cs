@@ -1,5 +1,8 @@
-﻿using Domain.Base;
+﻿using Data.Context;
+using Domain.Base;
+using Domain.Entities;
 using Domain.Repositories.Generic;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,31 +11,66 @@ using System.Threading.Tasks;
 
 namespace Data.Repositories.Generic
 {
-    internal class GenericRepository<T> : IRepository<T> where T : BaseEntity
+    public class GenericRepository<T> : IRepository<T> where T : BaseEntity
     {
-        public Task<T> Create(T item)
+        private readonly MySqlContext _context;
+        private DbSet<T> dataset;
+        public GenericRepository(MySqlContext context)
         {
-            throw new NotImplementedException();
+            _context = context;
+            dataset = _context.Set<T>();
+        }
+        public async Task<T> Create(T item)
+        {
+
+            try
+            {
+                dataset.Add(item);
+                await _context.SaveChangesAsync();
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            return item;
         }
 
-        public Task<bool> Delete(int id)
+        public async Task<bool> Delete(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var result = await dataset.SingleOrDefaultAsync(p => p.Id.Equals(id));
+                if (result == null) return false;
+                dataset.Remove(result);
+                await _context.SaveChangesAsync();
+                return true;
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
         }
 
-        public Task<ICollection<T>> FindAll()
+        public async Task<ICollection<T>> FindAll()
         {
-            throw new NotImplementedException();
+            List<T> item = await dataset.ToListAsync();
+            return item;
         }
 
-        public Task<T> FindById(int id)
+        public async Task<T> FindById(int id)
         {
-            throw new NotImplementedException();
+            var result = await dataset.SingleOrDefaultAsync(p => p.Id.Equals(id));
+            return result;
         }
-
-        public Task<T> Update(T item)
+        public async Task<T> Update(T item)
         {
-            throw new NotImplementedException();
+            dataset.Update(item);
+            await _context.SaveChangesAsync();
+            return item;
         }
     }
 }
+

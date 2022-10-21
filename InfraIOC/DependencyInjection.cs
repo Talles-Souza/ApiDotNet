@@ -21,6 +21,7 @@ namespace IoC
         {
             services.AddMvc();
             services.AddScoped<IPersonRepository, PersonRepository>();
+            services.AddScoped<IBookRepository, BookRepository>();
 
             return services;
         }
@@ -28,6 +29,7 @@ namespace IoC
         {
             services.AddAutoMapper(typeof(DomainToDtoMapping));
             services.AddScoped<IPersonService, PersonService>();
+            services.AddScoped<IBookService, BookService>();
             return services;
 
         }

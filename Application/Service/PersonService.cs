@@ -1,4 +1,5 @@
-﻿using Application.Service.Interface;
+﻿using Application.DTO;
+using Application.Service.Interface;
 using AutoMapper;
 using Domain.Entities;
 using Domain.Repositories;
@@ -16,13 +17,13 @@ namespace Application.Service
             _mapper = mapper;
         }
 
-        public async Task<ResultService<ICollection<Person>>> FindAll()
+        public async Task<ResultService<ICollection<PersonDTO>>> FindAll()
         {
             var people = await _personRepository.FindAll();
-            return ResultService.Ok<ICollection<Person>>(people);
+            return ResultService.Ok<ICollection<PersonDTO>>(_mapper.Map<ICollection<PersonDTO>>(people));
         }
 
-        public async Task<ResultService<Person>> FindById(int id)
+        public async Task<ResultService<PersonDTO>> FindById(int id)
         {
             var person = await _personRepository.FindById(id);
             if (person == null) return ResultService.Fail<Person>("Person not found");

@@ -1,4 +1,5 @@
 ﻿
+using Application.DTO;
 using AutoMapper;
 using Domain.Entities;
 
@@ -10,7 +11,9 @@ namespace Application.Mapping
         {
             CreateMap<Person, Person>();
             CreateMap<Book, Book>();
-           
+            CreateMap<Person, PersonDTO>();
+            CreateMap<PersonDTO, Person>();
+            
            
         }
     }

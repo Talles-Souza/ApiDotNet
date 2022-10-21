@@ -26,11 +26,11 @@ namespace Application.Service
         public async Task<ResultService<PersonDTO>> FindById(int id)
         {
             var person = await _personRepository.FindById(id);
-            if (person == null) return ResultService.Fail<Person>("Person not found");
-            return ResultService.Ok(person);
+            if (person == null) return ResultService.Fail<PersonDTO>("Person not found");
+            return ResultService.Ok(_mapper.Map< PersonDTO>(person));
         }
 
-        public async Task<ResultService<Person>> Update(Person person)
+        public async Task<ResultService<PersonDTO>> Update(PersonDTO personDTO)
         {
             if (person == null) return (ResultService<Person>)ResultService.Fail("Person must be informed");
             
@@ -40,7 +40,7 @@ namespace Application.Service
             var data = await _personRepository.Update(persons);
             return ResultService.Ok(data);
         }
-        public async Task<ResultService<Person>> Create(Person person)
+        public async Task<ResultService<PersonDTO>> Create(PersonDTO personDTO)
         {
             if (person == null) return ResultService.Fail<Person>("Object must be informed");
             var data = await _personRepository.Create(person);

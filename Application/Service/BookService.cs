@@ -2,16 +2,17 @@
 using AutoMapper;
 using Domain.Entities;
 using Domain.Repositories;
+using Domain.Repositories.Generic;
 using System;
 
 namespace Application.Service
 {
     public class BookService : IBookService
     {
-        private readonly IBookRepository _bookRepository;
+        private readonly IRepository<Book> _bookRepository;
         private readonly IMapper _mapper;
 
-        public BookService(IBookRepository bookRepository, IMapper mapper)
+        public BookService(IRepository<Book> bookRepository, IMapper mapper)
         {
             _bookRepository = bookRepository;
             _mapper = mapper;

@@ -11,6 +11,8 @@ using Microsoft.AspNetCore.Hosting;
 using Serilog;
 using Microsoft.Extensions.Hosting;
 using MySqlConnector;
+using Domain.Repositories.Generic;
+using Data.Repositories.Generic;
 
 namespace IoC
 {
@@ -22,6 +24,7 @@ namespace IoC
             services.AddMvc();
             services.AddScoped<IPersonRepository, PersonRepository>();
             services.AddScoped<IBookRepository, BookRepository>();
+            services.AddScoped(typeof(IRepository<>), typeof(GenericRepository<>));
 
             return services;
         }

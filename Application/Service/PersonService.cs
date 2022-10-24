@@ -32,19 +32,20 @@ namespace Application.Service
 
         public async Task<ResultService<PersonDTO>> Update(PersonDTO personDTO)
         {
-            if (person == null) return (ResultService<Person>)ResultService.Fail("Person must be informed");
-            
-            var persons = await _personRepository.FindById(person.Id);
-            if (persons == null) return (ResultService<Person>)ResultService.Fail("Person not found");
-            persons = _mapper.Map<Person, Person>(person, persons);
+            if (personDTO == null) return (ResultService<PersonDTO>)ResultService.Fail("Person must be informed");
+            var persons = _mapper.Map<Person>(personDTO);
+            persons = await _personRepository.FindById(persons.Id);
+            if (persons == null) return (ResultService<PersonDTO>)ResultService.Fail("Person not found");
+            persons = _mapper.Map<PersonDTO, Person>(personDTO, persons);
             var data = await _personRepository.Update(persons);
-            return ResultService.Ok(data);
+            return ResultService.Ok(_mapper.Map<PersonDTO>(data));
         }
         public async Task<ResultService<PersonDTO>> Create(PersonDTO personDTO)
         {
-            if (person == null) return ResultService.Fail<Person>("Object must be informed");
-            var data = await _personRepository.Create(person);
-            return ResultService.Ok(data);
+            if (personDTO == null) return ResultService.Fail<PersonDTO>("Object must be informed");
+            var persons = _mapper.Map<Person>(personDTO);
+            var data = await _personRepository.Create(persons);
+            return ResultService.Ok(_mapper.Map<PersonDTO>(data));
         }
 
         public async Task<ResultService> Delete(int id)

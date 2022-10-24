@@ -1,4 +1,5 @@
-﻿using Application.Service.Interface;
+﻿using Application.DTO;
+using Application.Service.Interface;
 using AutoMapper;
 using Domain.Entities;
 using Domain.Repositories;
@@ -18,12 +19,12 @@ namespace Application.Service
             _mapper = mapper;
         }
 
-        public async Task<ResultService<Book>> Create(Book book)
+        public async Task<ResultService<BookDTO>> Create(BookDTO bookDTO)
         {
 
-            if (book == null) return ResultService.Fail<Book>("Object must be informed");
-            var data = await _bookRepository.Create(book);
-            return ResultService.Ok(data);
+            if (bookDTO == null) return ResultService.Fail<BookDTO>("Object must be informed");
+            var data = await _bookRepository.Create(_mapper.Map<Book>(bookDTO));
+            return ResultService.Ok(_mapper.Map<BookDTO>(data));
         }
 
         public async Task<ResultService> Delete(int id)
@@ -34,28 +35,28 @@ namespace Application.Service
             return ResultService.Ok("Book with the id : " + id + " was successfully deleted");
         }
 
-        public async Task<ResultService<ICollection<Book>>> FindAll()
+        public async Task<ResultService<ICollection<BookDTO>>> FindAll()
         {
             var book = await _bookRepository.FindAll();
-            return ResultService.Ok<ICollection<Book>>(book);
+            return ResultService.Ok<ICollection<BookDTO>>(_mapper.Map<ICollection<BookDTO>>(book));
         }
 
-        public async Task<ResultService<Book>> FindById(int id)
+        public async Task<ResultService<BookDTO>> FindById(int id)
         {
             var book = await _bookRepository.FindById(id);
-            if (book == null) return ResultService.Fail<Book>("Book not found");
-            return ResultService.Ok(book);
+            if (book == null) return ResultService.Fail<BookDTO>("Book not found");
+            return ResultService.Ok(_mapper.Map<BookDTO>(book));
         }
 
-        public async Task<ResultService<Book>> Update(Book book)
+        public async Task<ResultService<BookDTO>> Update(BookDTO bookDTO)
         {
-            if (book == null) return (ResultService<Book>)ResultService.Fail("Book must be informed");
-
-            var books = await _bookRepository.FindById(book.Id);
-            if (books == null) return (ResultService<Book>)ResultService.Fail("Book not found");
-            books = _mapper.Map<Book, Book>(book, books);
+            if (bookDTO == null) return (ResultService<BookDTO>)ResultService.Fail("Book must be informed");
+          
+            var  books = await _bookRepository.FindById(bookDTO.Id);
+            if (books == null) return (ResultService<BookDTO>)ResultService.Fail("Book not found");
+            books = _mapper.Map<BookDTO, Book>(bookDTO, books);
             var data = await _bookRepository.Update(books);
-            return ResultService.Ok(data);
+            return ResultService.Ok(_mapper.Map<BookDTO>(data));
         }
     }
 }

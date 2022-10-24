@@ -33,8 +33,8 @@ namespace Application.Service
         public async Task<ResultService<PersonDTO>> Update(PersonDTO personDTO)
         {
             if (personDTO == null) return (ResultService<PersonDTO>)ResultService.Fail("Person must be informed");
-            var persons = _mapper.Map<Person>(personDTO);
-            persons = await _personRepository.FindById(persons.Id);
+            
+           var persons = await _personRepository.FindById(personDTO.Id);
             if (persons == null) return (ResultService<PersonDTO>)ResultService.Fail("Person not found");
             persons = _mapper.Map<PersonDTO, Person>(personDTO, persons);
             var data = await _personRepository.Update(persons);

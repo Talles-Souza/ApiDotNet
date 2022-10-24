@@ -1,4 +1,5 @@
-﻿using Application.Service;
+﻿using Application.DTO;
+using Application.Service;
 using Application.Service.Interface;
 using Domain.Entities;
 using Microsoft.AspNetCore.Http;
@@ -18,7 +19,7 @@ namespace ApiDotNet.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Create([FromBody] Book book)
+        public async Task<ActionResult> Create([FromBody] BookDTO book)
         {
             var result = await _bookService.Create(book);
             if (result.IsSuccess) return Ok(result);
@@ -42,7 +43,7 @@ namespace ApiDotNet.Controllers
         }
 
         [HttpPut]
-        public async Task<ActionResult> Update([FromBody] Book book)
+        public async Task<ActionResult> Update([FromBody] BookDTO book)
         {
             var result = await _bookService.Update(book);
             if (result.IsSuccess) return Ok(result);

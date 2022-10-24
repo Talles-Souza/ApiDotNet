@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Application.Hypermedia.Filters
 {
-    internal class HyperMediaFilter : ResultFilterAttribute
+    public class HyperMediaFilter : ResultFilterAttribute
     {
         private readonly HyperMediaFileOptions hyperMediaFileOptions;
 

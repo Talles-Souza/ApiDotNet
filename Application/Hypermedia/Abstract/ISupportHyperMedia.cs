@@ -2,6 +2,6 @@
 {
     public interface ISupportHyperMedia
     {
-        List<HypermediaLink> Links { get; set; }
+        List<HyperMediaLink> Links { get; set; }
     }
 }

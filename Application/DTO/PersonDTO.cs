@@ -5,10 +5,12 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Application.Hypermedia.Abstract;
+using Application.Hypermedia;
 
 namespace Application.DTO
 {
-    public class PersonDTO
+    public class PersonDTO : ISupportHyperMedia
     {
 
         public int Id { get; set; }
@@ -19,6 +21,7 @@ namespace Application.DTO
         public string Address { get; set; }
       
         public string Gender { get; set; }
+        public List<HyperMediaLink> Links { get; set; } = new List<HyperMediaLink>();   
     }
 }
 

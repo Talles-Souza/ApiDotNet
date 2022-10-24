@@ -1,4 +1,5 @@
-﻿using Application.Service.Interface;
+﻿using Application.DTO;
+using Application.Service.Interface;
 using Domain.Entities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -19,7 +20,7 @@ namespace ApiDotNet.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Create([FromBody] Person person)
+        public async Task<ActionResult> Create([FromBody] PersonDTO person)
         {
             var result = await _personService.Create(person);
             if (result.IsSuccess) return Ok(result);
@@ -43,7 +44,7 @@ namespace ApiDotNet.Controllers
         }
 
         [HttpPut]
-        public async Task<ActionResult> Update([FromBody] Person person)
+        public async Task<ActionResult> Update([FromBody] PersonDTO person)
         {
             var result = await _personService.Update(person);
             if (result.IsSuccess) return Ok(result);

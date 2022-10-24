@@ -13,6 +13,8 @@ namespace Application.Mapping
             CreateMap<Book, Book>();
             CreateMap<Person, PersonDTO>();
             CreateMap<PersonDTO, Person>();
+            CreateMap<BookDTO, Book>();
+            CreateMap<Book, BookDTO>();
             
            
         }

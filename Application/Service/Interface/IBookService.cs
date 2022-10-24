@@ -1,13 +1,14 @@
-﻿using Domain.Entities;
+﻿using Application.DTO;
+using Domain.Entities;
 
 namespace Application.Service.Interface
 {
     public interface IBookService
     {
-        Task<ResultService<Book>> Create(Book book);
-        Task<ResultService<ICollection<Book>>> FindAll();
-        Task<ResultService<Book>> FindById(int id);
-        Task<ResultService<Book>> Update(Book book);
+        Task<ResultService<BookDTO>> Create(BookDTO bookDTO);
+        Task<ResultService<ICollection<BookDTO>>> FindAll();
+        Task<ResultService<BookDTO>> FindById(int id);
+        Task<ResultService<BookDTO>> Update(BookDTO bookDTO);
         Task<ResultService> Delete(int id);
     }
 }

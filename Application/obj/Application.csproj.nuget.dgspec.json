@@ -56,6 +56,10 @@
             "FluentValidation": {
               "target": "Package",
               "version": "[11.2.2, )"
+            },
+            "Microsoft.AspNetCore.Mvc.Core": {
+              "target": "Package",
+              "version": "[2.2.5, )"
             }
           },
           "imports": [

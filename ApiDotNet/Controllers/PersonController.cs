@@ -30,6 +30,7 @@ namespace ApiDotNet.Controllers
         }
 
         [HttpGet]
+        [ProducesResponseType((200), Type =  typeof(List<PersonDTO>))]
         [TypeFilter(typeof(HyperMediaFilter))]
         public async Task<ActionResult> FindByAll()
         {
@@ -39,6 +40,7 @@ namespace ApiDotNet.Controllers
 
         }
         [HttpGet("{id}")]
+        [ProducesResponseType((200), Type = typeof(PersonDTO))]
         [TypeFilter(typeof(HyperMediaFilter))]
         public async Task<ActionResult> FindById(int id)
         {

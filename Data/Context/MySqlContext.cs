@@ -18,6 +18,7 @@ namespace Data.Context
 
         public DbSet<Person> People { get; set; }
         public DbSet<Book> Books { get; set; }
+        public DbSet<User> Users { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

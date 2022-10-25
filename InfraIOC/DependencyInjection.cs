@@ -13,6 +13,8 @@ using Microsoft.Extensions.Hosting;
 using MySqlConnector;
 using Domain.Repositories.Generic;
 using Data.Repositories.Generic;
+using Application.Hypermedia.Filters;
+using Application.Hypermedia.Enricher;
 
 namespace IoC
 {
@@ -25,7 +27,9 @@ namespace IoC
             services.AddScoped<IPersonRepository, PersonRepository>();
             services.AddScoped<IBookRepository, BookRepository>();
             services.AddScoped(typeof(IRepository<>), typeof(GenericRepository<>));
-
+            var filterOptions = new HyperMediaFileOptions();
+            filterOptions.ContentResponseEnricherList.Add(new PersonEnricher());
+            services.AddSingleton(filterOptions);
             return services;
         }
         public static IServiceCollection AddServices(this IServiceCollection services, IConfiguration configuration)
@@ -33,6 +37,7 @@ namespace IoC
             services.AddAutoMapper(typeof(DomainToDtoMapping));
             services.AddScoped<IPersonService, PersonService>();
             services.AddScoped<IBookService, BookService>();
+            
             return services;
 
         }

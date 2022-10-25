@@ -1,4 +1,5 @@
 ﻿using Application.DTO;
+using Application.Hypermedia.Filters;
 using Application.Service.Interface;
 using Domain.Entities;
 using Microsoft.AspNetCore.Http;
@@ -20,6 +21,7 @@ namespace ApiDotNet.Controllers
         }
 
         [HttpPost]
+        [TypeFilter(typeof(HyperMediaFilter))]
         public async Task<ActionResult> Create([FromBody] PersonDTO person)
         {
             var result = await _personService.Create(person);
@@ -28,6 +30,7 @@ namespace ApiDotNet.Controllers
         }
 
         [HttpGet]
+        [TypeFilter(typeof(HyperMediaFilter))]
         public async Task<ActionResult> FindByAll()
         {
             var result = await _personService.FindAll();
@@ -36,6 +39,7 @@ namespace ApiDotNet.Controllers
 
         }
         [HttpGet("{id}")]
+        [TypeFilter(typeof(HyperMediaFilter))]
         public async Task<ActionResult> FindById(int id)
         {
             var result = await _personService.FindById(id);
@@ -44,6 +48,7 @@ namespace ApiDotNet.Controllers
         }
 
         [HttpPut]
+        [TypeFilter(typeof(HyperMediaFilter))]
         public async Task<ActionResult> Update([FromBody] PersonDTO person)
         {
             var result = await _personService.Update(person);

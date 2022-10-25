@@ -12,7 +12,7 @@ namespace Application.DTO
 {
     public class PersonDTO : ISupportHyperMedia
     {
-
+     
         public int Id { get; set; }
         public string FirstName { get; set; }
         

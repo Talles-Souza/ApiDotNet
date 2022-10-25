@@ -14,6 +14,7 @@ namespace Application.Hypermedia
 
         public bool CanEnrich(Type contentType)
         {
+           
             return contentType == typeof(T) || contentType == typeof(List<T>);
         }
         protected abstract Task EnrichModel(T content, IUrlHelper urlHelper);

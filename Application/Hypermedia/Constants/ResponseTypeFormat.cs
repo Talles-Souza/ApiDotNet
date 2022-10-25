@@ -2,10 +2,10 @@
 {
     public sealed class ResponseTypeFormat
     {
-        public const string GDefaultGet= "application/json";
-        public const string GDefaultPost= "application/json";
-        public const string GDefaultPut= "application/json";
-        public const string GDefaultPatch= "application/json";
+        public const string DefaultGet= "application/json";
+        public const string DefaultPost= "application/json";
+        public const string DefaultPut= "application/json";
+        public const string DefaultPatch= "application/json";
      
     }
 }

@@ -10,7 +10,7 @@ namespace Domain.Repositories
     public interface ITokenRepository
     {
         string GenerateAccessToken(IEnumerable<Claim> claims);
-        Task<string> GenerateRefreshToken();
-        Task<ClaimsPrincipal> GetPrincipalFromExpiredToken(string token);
+        string GenerateRefreshToken();
+        ClaimsPrincipal GetPrincipalFromExpiredToken(string token);
     }
 }

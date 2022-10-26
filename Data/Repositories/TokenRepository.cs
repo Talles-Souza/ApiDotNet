@@ -53,10 +53,16 @@ namespace Data.Repositories
             {
                 ValidateAudience = false,
                 ValidateIssuer = false,
-                ValidateIssuerSigningKey=true,
-                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration.Secret));
+                ValidateIssuerSigningKey = true,
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration.Secret)),
+                ValidateLifetime = false
         };
-            ClaimsPrincipal principal = null;
+            var tokenHandler =  new JwtSecurityTokenHandler();
+            SecurityToken securityToken;
+            var principal = tokenHandler.ValidateToken(token,tokenValidationParameters, out securityToken);
+            var jwtSecurityToken= securityToken as JwtSecurityToken;
+            if (jwtSecurityToken == null || !jwtSecurityToken.Header.Alg.Equals
+                (SecurityAlgorithms.HmacSha256, StringComparison.InvariantCulture)) throw new SecurityTokenException("Invalid Token");
             return principal;
         }
     }

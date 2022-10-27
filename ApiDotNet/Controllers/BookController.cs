@@ -2,12 +2,14 @@
 using Application.Service;
 using Application.Service.Interface;
 using Domain.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ApiDotNet.Controllers
 {
     [Route("api/[controller]")]
+    [Authorize("Bearer")]
     [ApiController]
     public class BookController : ControllerBase
     {

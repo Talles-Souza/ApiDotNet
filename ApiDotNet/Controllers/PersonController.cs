@@ -2,6 +2,7 @@
 using Application.Hypermedia.Filters;
 using Application.Service.Interface;
 using Domain.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,6 +10,7 @@ namespace ApiDotNet.Controllers
 {
     
     [Route("api/v1/[controller]")]
+    [Authorize("Bearer")]
     [ApiController]
     public class PersonController : ControllerBase
     {

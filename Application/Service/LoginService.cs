@@ -12,12 +12,12 @@ namespace Application.Service
     public class LoginService : ILoginService
     {
         private const string DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
-        private TokenConfigurations _configuration;
+        private TokenConfiguration _configuration;
         private IUserRepository userRepository;
         private readonly ITokenRepository tokenRepository;
         private readonly IMapper _mapper;
         
-        public LoginService(TokenConfigurations configuration, IUserRepository userRepository, ITokenRepository tokenRepository, IMapper mapper)
+        public LoginService(TokenConfiguration configuration, IUserRepository userRepository, ITokenRepository tokenRepository, IMapper mapper)
         {
             _configuration = configuration;
             this.userRepository = userRepository;
@@ -38,9 +38,11 @@ namespace Application.Service
 
             user.RefreshToken = refreshToken;
             user.RefreshTokenExpiryTime = DateTime.Now.AddDays(_configuration.DaysToExpiry);
-
+            userRepository.RefreshUserInfo(user);
             DateTime createDate = DateTime.Now;
             DateTime expirationDate = createDate.AddMinutes(_configuration.Minutes);
+
+            
             return new TokenDTO(
                 true,
                 createDate.ToString(DATE_FORMAT),

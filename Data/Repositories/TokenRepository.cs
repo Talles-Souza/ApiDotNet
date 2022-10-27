@@ -14,9 +14,9 @@ namespace Data.Repositories
 {
     public class TokenRepository : ITokenRepository
     {
-       private TokenConfigurations _configuration;
+       private TokenConfiguration _configuration;
 
-        public TokenRepository(TokenConfigurations configuration)
+        public TokenRepository(TokenConfiguration configuration)
         {
             _configuration = configuration;
         }

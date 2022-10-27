@@ -10,5 +10,6 @@ namespace Domain.Repositories
     public interface IUserRepository
     {
         User ValidateCredentials (User user);
+        Task<User> RefreshUserInfo(User user);
     }
 }

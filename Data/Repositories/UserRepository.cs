@@ -16,10 +16,10 @@ namespace Data.Repositories
             _context = context;
         }
 
-        public async Task<User> ValidateCredentials(User user)
+        public  User ValidateCredentials(User user)
         {
             var pass = ComputeHash(user.Password, new SHA256CryptoServiceProvider());
-            return await _context.Users.FirstOrDefaultAsync(u => (u.UserName == user.UserName) && (u.Password == pass));
+            return  _context.Users.FirstOrDefault(u => (u.UserName == user.UserName) && (u.Password == pass));
         }
 
         public async Task<User> RefreshUserInfo(User user)
@@ -49,5 +49,7 @@ namespace Data.Repositories
             Byte[] hashedBytes = algoriti.ComputeHash(inputBytes);
             return BitConverter.ToString(hashedBytes);
         }
+
+        
     }
 }

@@ -51,14 +51,14 @@ namespace Data.Repositories
             return BitConverter.ToString(hashedBytes);
         }
 
-        public async Task<string> Create(User user)
+        public  User Create(User user)
 
         {
             var pass = ComputeHash(user.Password, new SHA256CryptoServiceProvider());
             user.Password = pass;
             _context.Add(user);
-            await _context.SaveChangesAsync();
-            return "User created";
+            _context.SaveChanges();
+            return user;
 
         }
     }

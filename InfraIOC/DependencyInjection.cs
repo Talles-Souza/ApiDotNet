@@ -75,6 +75,7 @@ namespace IoC
             services.AddScoped<IPersonService, PersonService>();
             services.AddScoped<IBookService, BookService>();
             services.AddScoped<ILoginService, LoginService>();
+            services.AddScoped<IRegisterService, RegisterService>();
             return services;
 
         }

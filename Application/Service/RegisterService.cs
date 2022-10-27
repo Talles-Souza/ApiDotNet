@@ -1,6 +1,7 @@
 ﻿using Application.DTO;
 using Application.Service.Interface;
 using AutoMapper;
+using Domain.Entities;
 using Domain.Repositories;
 using System;
 using System.Collections.Generic;
@@ -21,9 +22,15 @@ namespace Application.Service
             _mapper = mapper;
         }
 
-        public Task<RegisterDTO> Create(RegisterDTO registerDTO)
+        public  string Create(RegisterDTO registerDTO)
         {
-            throw new NotImplementedException();
+            //var user=  _mapper.Map<User>(registerDTO);
+            User user = new User();
+            user.UserName = registerDTO.UserName;   
+            user.FullName = registerDTO.FullName;
+            user.Password = registerDTO.Password;
+            userRepository.Create(user);
+            return "User created";
         }
     }
 }

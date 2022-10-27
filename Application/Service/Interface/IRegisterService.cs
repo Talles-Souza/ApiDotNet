@@ -9,6 +9,6 @@ namespace Application.Service.Interface
 {
     public interface IRegisterService
     {
-        Task<RegisterDTO> Create(RegisterDTO registerDTO);
+        string Create(RegisterDTO registerDTO);
     }
 }

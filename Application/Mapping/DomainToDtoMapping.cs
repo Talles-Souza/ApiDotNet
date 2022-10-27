@@ -17,8 +17,12 @@ namespace Application.Mapping
             CreateMap<Book, BookDTO>();
             CreateMap<User, UserDTO>();
             CreateMap<UserDTO, User>();
+            CreateMap<RegisterDTO, User>();
+            CreateMap<User, RegisterDTO>();
             
            
+
         }
+
     }
 }

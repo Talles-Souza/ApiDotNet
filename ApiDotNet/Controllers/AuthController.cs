@@ -10,11 +10,14 @@ namespace ApiDotNet.Controllers
     public class AuthController : ControllerBase
     {
         private ILoginService loginService;
+        private IRegisterService _registerService;
 
-        public AuthController(ILoginService loginService)
+        public AuthController(ILoginService loginService, IRegisterService registerService)
         {
             this.loginService = loginService;
+            _registerService = registerService;
         }
+
         [HttpPost("/")]
         public IActionResult Signin([FromBody] UserDTO userDTO)
         {
@@ -22,6 +25,12 @@ namespace ApiDotNet.Controllers
             var token = loginService.ValidateCredentials(userDTO);
             if (token == null) return Unauthorized();
             return Ok(token);
+        }
+        [HttpPost("/register")]
+        public IActionResult Create([FromBody] RegisterDTO registerDTO)
+        {
+            _registerService.Create(registerDTO);
+            return Ok();
         }
     }
 }

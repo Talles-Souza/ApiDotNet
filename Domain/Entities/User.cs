@@ -16,11 +16,11 @@ namespace Domain.Entities
         [Column("full_name")]
         public string? FullName { get; set; }
         [Column("password")]
-        public string Password { get; set; }
+        public string? Password { get; set; }
         [Column("refresh_token")]
-        public string RefreshToken { get; set; }
+        public string? RefreshToken { get; set; }
         [Column("refresh_token_expiry_time")]
-        public DateTime RefreshTokenExpiryTime { get; set; }
+        public DateTime? RefreshTokenExpiryTime { get; set; }
 
         public User(string? userName, string? fullName, string password)
         {
@@ -28,6 +28,10 @@ namespace Domain.Entities
             FullName = fullName;
             Password = password;
           
+        }
+        public User()
+        {
+
         }
     }
 }

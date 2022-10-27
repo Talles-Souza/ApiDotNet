@@ -13,6 +13,6 @@ namespace Application.DTO
         
         public string? FullName { get; set; }
         
-        public string Password { get; set; }
+        public string? Password { get; set; }
     }
 }

@@ -2,6 +2,7 @@
 using Domain.Entities;
 using Domain.Repositories;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -50,6 +51,15 @@ namespace Data.Repositories
             return BitConverter.ToString(hashedBytes);
         }
 
-        
+        public async Task<string> Create(User user)
+
+        {
+            var pass = ComputeHash(user.Password, new SHA256CryptoServiceProvider());
+            user.Password = pass;
+            _context.Add(user);
+            await _context.SaveChangesAsync();
+            return "User created";
+
+        }
     }
 }

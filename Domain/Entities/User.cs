@@ -21,5 +21,13 @@ namespace Domain.Entities
         public string RefreshToken { get; set; }
         [Column("refresh_token_expiry_time")]
         public DateTime RefreshTokenExpiryTime { get; set; }
+
+        public User(string? userName, string? fullName, string password)
+        {
+            UserName = userName;
+            FullName = fullName;
+            Password = password;
+          
+        }
     }
 }

@@ -9,6 +9,6 @@ namespace Domain.Repositories
 {
     public interface IUserRepository
     {
-        Task<User> ValidateCredentials (User user);
+        User ValidateCredentials (User user);
     }
 }

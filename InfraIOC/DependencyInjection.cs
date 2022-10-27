@@ -14,6 +14,11 @@ using Application.Hypermedia.Enricher;
 using Domain.SecurityConfig;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authentication.OAuth;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using Microsoft.AspNetCore.Authorization;
 
 namespace IoC
 {
@@ -36,6 +41,31 @@ namespace IoC
               configuration.GetSection("TokenConfigurations")
               ).Configure(tokenConfigurations);
             services.AddSingleton(tokenConfigurations);
+            services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            }
+            ).AddJwtBearer(options =>
+            {
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = true,
+                    ValidIssuer = tokenConfigurations.Issuer,
+                    ValidAudience = tokenConfigurations.Audience,
+                    IssuerSigningKey =  new SymmetricSecurityKey(Encoding.UTF8.GetBytes(
+                    tokenConfigurations.Secret   ))
+                };
+            });
+
+            services.AddAuthorization(auth =>
+            {
+                auth.AddPolicy("Bearer", new AuthorizationPolicyBuilder().AddAuthenticationSchemes(JwtBearerDefaults.
+                    AuthenticationScheme).RequireAuthenticatedUser().Build());
+            });
 
             return services;
         }

@@ -51,5 +51,32 @@ namespace Application.Service
                 refreshToken
                 );
         }
+
+        public TokenDTO ValidateCredentials(TokenDTO token)
+        {
+            var accessToken = token.AccessToken;
+            var refreshToken = token.RefreshToken;
+            var principal =  tokenRepository.GetPrincipalFromExpiredToken(accessToken);
+            var userName = principal.Identity.Name;
+            var user = userRepository.ValidateCredentials(userName);
+
+            if (user == null || user.RefreshToken != refreshToken || user.RefreshTokenExpiryTime <= DateTime.Now) return null;
+            accessToken = tokenRepository.GenerateAccessToken(principal.Claims);
+            refreshToken = tokenRepository.GenerateRefreshToken();
+            user.RefreshToken = refreshToken;
+            userRepository.RefreshUserInfo(user);
+            DateTime createDate = DateTime.Now;
+            DateTime expirationDate = createDate.AddMinutes(_configuration.Minutes);
+
+
+            return new TokenDTO(
+                true,
+                createDate.ToString(DATE_FORMAT),
+                expirationDate.ToString(DATE_FORMAT),
+                accessToken,
+                refreshToken
+                );
+
+        }
     }
 }

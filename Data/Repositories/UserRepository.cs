@@ -61,5 +61,10 @@ namespace Data.Repositories
             return user;
 
         }
+
+        public User ValidateCredentials(string userName)
+        {
+            return _context.Users.FirstOrDefault(u => (u.UserName == userName));
+        }
     }
 }

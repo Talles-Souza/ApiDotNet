@@ -64,7 +64,7 @@ namespace Data.Repositories
 
         public User ValidateCredentials(string userName)
         {
-            return _context.Users.FirstOrDefault(u => (u.AccessToken == userName));
+            return _context.Users.FirstOrDefault(u => (u.UserName == userName));
         } 
     }
 }

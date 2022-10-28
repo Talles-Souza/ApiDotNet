@@ -62,7 +62,7 @@ namespace Application.Service
             var principal =  tokenRepository.GetPrincipalFromExpiredToken(accessToken);
             var userName = principal.Identity.Name;
 
-            var user = userRepository.ValidateCredentials(token.AccessToken) ;
+            var user = userRepository.ValidateCredentials(userName) ;
 
             if (user == null || user.RefreshToken != refreshToken || 
                user.RefreshTokenExpiryTime <= DateTime.Now) return null;

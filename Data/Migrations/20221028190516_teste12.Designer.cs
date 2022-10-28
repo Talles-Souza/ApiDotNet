@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data.Migrations
 {
     [DbContext(typeof(MySqlContext))]
-    [Migration("20221020160139_Update1")]
-    partial class Update1
+    [Migration("20221028190516_teste12")]
+    partial class teste12
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -85,6 +85,42 @@ namespace Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("person");
+                });
+
+            modelBuilder.Entity("Domain.Entities.User", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("id");
+
+                    b.Property<string>("AccessToken")
+                        .HasColumnType("longtext")
+                        .HasColumnName("access_token");
+
+                    b.Property<string>("FullName")
+                        .HasColumnType("longtext")
+                        .HasColumnName("full_name");
+
+                    b.Property<string>("Password")
+                        .HasColumnType("longtext")
+                        .HasColumnName("password");
+
+                    b.Property<string>("RefreshToken")
+                        .HasColumnType("longtext")
+                        .HasColumnName("refresh_token");
+
+                    b.Property<DateTime?>("RefreshTokenExpiryTime")
+                        .HasColumnType("datetime(6)")
+                        .HasColumnName("refresh_token_expiry_time");
+
+                    b.Property<string>("UserName")
+                        .HasColumnType("longtext")
+                        .HasColumnName("user_name");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("users");
                 });
 #pragma warning restore 612, 618
         }

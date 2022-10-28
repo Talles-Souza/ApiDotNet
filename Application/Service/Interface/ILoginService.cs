@@ -10,6 +10,6 @@ namespace Application.Service.Interface
     public interface ILoginService
     {
         TokenDTO ValidateCredentials(UserDTO userDTO); 
-        TokenDTO ValidateCredentials(TokenDTO token); 
+        TokenDTO ValidateCredentials(AccessDTO token); 
     }
 }

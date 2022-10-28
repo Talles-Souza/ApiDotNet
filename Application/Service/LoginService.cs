@@ -36,9 +36,10 @@ namespace Application.Service
             };
             var accessToken = tokenRepository.GenerateAccessToken(claims);
             var refreshToken = tokenRepository.GenerateRefreshToken();
-
+            user.AccessToken = accessToken;
             user.RefreshToken = refreshToken;
             user.RefreshTokenExpiryTime = DateTime.Now.AddDays(_configuration.DaysToExpiry);
+
             userRepository.RefreshUserInfo(user);
             DateTime createDate = DateTime.Now;
             DateTime expirationDate = createDate.AddMinutes(_configuration.Minutes);
@@ -53,7 +54,7 @@ namespace Application.Service
                 );
         }
 
-        public TokenDTO ValidateCredentials(TokenDTO token)
+        public TokenDTO ValidateCredentials(AccessDTO token)
         {
             
             var accessToken = token.AccessToken;
@@ -61,7 +62,7 @@ namespace Application.Service
             var principal =  tokenRepository.GetPrincipalFromExpiredToken(accessToken);
             var userName = principal.Identity.Name;
 
-            var user = userRepository.ValidateCredentials(userName.ToString()) ;
+            var user = userRepository.ValidateCredentials(token.AccessToken) ;
 
             if (user == null || user.RefreshToken != refreshToken || 
                user.RefreshTokenExpiryTime <= DateTime.Now) return null;

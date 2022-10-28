@@ -23,10 +23,10 @@ namespace Data.Repositories
             return  _context.Users.FirstOrDefault(u => (u.UserName == user.UserName) && (u.Password == pass));
         }
 
-        public async Task<User> RefreshUserInfo(User user)
+        public  User RefreshUserInfo(User user)
         {
-            if (!await _context.Users.AnyAsync(u => u.Id.Equals(user.Id))) return null;
-            var result = await _context.Users.SingleOrDefaultAsync(p => p.Id.Equals(user.Id));
+            if (!_context.Users.Any(u => u.Id.Equals(user.Id))) return null;
+            var result =  _context.Users.SingleOrDefault(p => p.Id.Equals(user.Id));
             if (result != null)
             {
                 try
@@ -64,7 +64,7 @@ namespace Data.Repositories
 
         public User ValidateCredentials(string userName)
         {
-            return _context.Users.FirstOrDefault(u => (u.UserName == userName));
+            return _context.Users.FirstOrDefault(u => (u.AccessToken == userName));
         } 
     }
 }

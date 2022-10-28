@@ -92,23 +92,25 @@ namespace Data.Migrations
                         .HasColumnType("int")
                         .HasColumnName("id");
 
+                    b.Property<string>("AccessToken")
+                        .HasColumnType("longtext")
+                        .HasColumnName("access_token");
+
                     b.Property<string>("FullName")
                         .HasColumnType("longtext")
                         .HasColumnName("full_name");
 
                     b.Property<string>("Password")
-                        .IsRequired()
                         .HasColumnType("longtext")
                         .HasColumnName("password");
 
                     b.Property<string>("RefreshToken")
-                        .IsRequired()
                         .HasColumnType("longtext")
                         .HasColumnName("refresh_token");
 
-                    b.Property<DateTime>("RefreshTokenExpiryTime")
+                    b.Property<DateTime?>("RefreshTokenExpiryTime")
                         .HasColumnType("datetime(6)")
-                        .HasColumnName("refresh_token_expiry_tipe");
+                        .HasColumnName("refresh_token_expiry_time");
 
                     b.Property<string>("UserName")
                         .HasColumnType("longtext")

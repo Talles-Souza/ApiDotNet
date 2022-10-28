@@ -19,6 +19,10 @@ namespace Domain.Entities
         public string? Password { get; set; }
         [Column("refresh_token")]
         public string? RefreshToken { get; set; }
+        
+        [Column("access_token")]
+        public string? AccessToken { get; set; }
+        
         [Column("refresh_token_expiry_time")]
         public DateTime? RefreshTokenExpiryTime { get; set; }
 

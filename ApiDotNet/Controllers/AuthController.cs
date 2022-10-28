@@ -33,7 +33,7 @@ namespace ApiDotNet.Controllers
             return Ok();
         }
         [HttpPost("/refresh")]
-        public IActionResult Refresh([FromBody] TokenDTO tokenDTO)
+        public IActionResult Refresh([FromBody] AccessDTO tokenDTO)
         {
             if (tokenDTO == null) return BadRequest("Invalid client request");
             var token = loginService.ValidateCredentials(tokenDTO);

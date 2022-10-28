@@ -11,7 +11,7 @@ namespace Domain.Repositories
     {
         User ValidateCredentials (User user);
         User ValidateCredentials (string userName);
-        Task<User> RefreshUserInfo(User user);
+        User RefreshUserInfo(User user);
         User Create(User user);
     }
 }

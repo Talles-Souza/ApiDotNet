@@ -1,0 +1,17 @@
+C:\C#\DotNetCore\Data\bin\Debug\net6.0\Data.deps.json
+C:\C#\DotNetCore\Data\bin\Debug\net6.0\Data.dll
+C:\C#\DotNetCore\Data\bin\Debug\net6.0\Data.pdb
+C:\C#\DotNetCore\Data\obj\Debug\net6.0\Data.csproj.AssemblyReference.cache
+C:\C#\DotNetCore\Data\obj\Debug\net6.0\Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\C#\DotNetCore\Data\obj\Debug\net6.0\Data.AssemblyInfoInputs.cache
+C:\C#\DotNetCore\Data\obj\Debug\net6.0\Data.AssemblyInfo.cs
+C:\C#\DotNetCore\Data\obj\Debug\net6.0\Data.csproj.CoreCompileInputs.cache
+C:\C#\DotNetCore\Data\obj\Debug\net6.0\Data.dll
+C:\C#\DotNetCore\Data\obj\Debug\net6.0\refint\Data.dll
+C:\C#\DotNetCore\Data\obj\Debug\net6.0\Data.pdb
+C:\C#\DotNetCore\Data\obj\Debug\net6.0\ref\Data.dll
+C:\C#\DotNetCore\Data\bin\Debug\net6.0\Domain.dll
+C:\C#\DotNetCore\Data\bin\Debug\net6.0\Domain.pdb
+C:\C#\DotNetCore\Data\obj\Debug\net6.0\Data.csproj.CopyComplete
+C:\C#\DotNetCore\Data\bin\Debug\net6.0\Data.runtimeconfig.json
+C:\C#\DotNetCore\Data\obj\Debug\net6.0\Data.genruntimeconfig.cache

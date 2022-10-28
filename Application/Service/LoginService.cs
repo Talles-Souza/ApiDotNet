@@ -11,6 +11,7 @@ namespace Application.Service
 {
     public class LoginService : ILoginService
     {
+        
         private const string DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
         private TokenConfiguration _configuration;
         private IUserRepository userRepository;
@@ -54,13 +55,16 @@ namespace Application.Service
 
         public TokenDTO ValidateCredentials(TokenDTO token)
         {
+            
             var accessToken = token.AccessToken;
-            var refreshToken = token.RefreshToken;
+            var refreshToken = token.RefreshToken; 
             var principal =  tokenRepository.GetPrincipalFromExpiredToken(accessToken);
             var userName = principal.Identity.Name;
-            var user = userRepository.ValidateCredentials(userName);
 
-            if (user == null || user.RefreshToken != refreshToken || user.RefreshTokenExpiryTime <= DateTime.Now) return null;
+            var user = userRepository.ValidateCredentials(userName.ToString()) ;
+
+            if (user == null || user.RefreshToken != refreshToken || 
+               user.RefreshTokenExpiryTime <= DateTime.Now) return null;
             accessToken = tokenRepository.GenerateAccessToken(principal.Claims);
             refreshToken = tokenRepository.GenerateRefreshToken();
             user.RefreshToken = refreshToken;

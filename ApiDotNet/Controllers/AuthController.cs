@@ -18,7 +18,7 @@ namespace ApiDotNet.Controllers
             _registerService = registerService;
         }
 
-        [HttpPost("/")]
+        [HttpPost("/login")]
         public IActionResult Signin([FromBody] UserDTO userDTO)
         {
             if (userDTO == null) return BadRequest("Invalid client request");
@@ -31,6 +31,15 @@ namespace ApiDotNet.Controllers
         {
             _registerService.Create(registerDTO);
             return Ok();
+        }
+        [HttpPost("/refresh")]
+        public IActionResult Refresh([FromBody] TokenDTO tokenDTO)
+        {
+            if (tokenDTO == null) return BadRequest("Invalid client request");
+            var token = loginService.ValidateCredentials(tokenDTO);
+            if (token == null) return BadRequest("Invalid client request");
+            return Ok(token);
+
         }
     }
 }

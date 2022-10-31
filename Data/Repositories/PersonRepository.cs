@@ -56,8 +56,19 @@ namespace Data.Repositories
             var user = _context.People.SingleOrDefault(p => p.Id.Equals(id));
             if (user != null)
             {
+                user.Enabled = false;
+                try
+                {
+                    _context.Entry(user).CurrentValues.SetValues(user); 
+                }
+                catch (Exception)
+                {
 
+                    throw;
+                }
             }
+            return user;
+
         }
 
         public async Task<ICollection<Person>> FindAll()    

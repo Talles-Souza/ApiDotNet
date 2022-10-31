@@ -28,6 +28,8 @@ namespace Domain.Entities
         [Required]
         [StringLength(10)]
         public string Gender { get; set; }
+        [Column("enabled")]
+        public bool Enabled { get; set; }
 
      
 

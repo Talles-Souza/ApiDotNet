@@ -50,7 +50,17 @@ namespace Data.Repositories
             }
         }
 
-        public async Task<ICollection<Person>> FindAll()
+        public Person Disable(long id)
+        {
+            if (!_context.People.Any(p=> p.Id.Equals(id))) return null;
+            var user = _context.People.SingleOrDefault(p => p.Id.Equals(id));
+            if (user != null)
+            {
+
+            }
+        }
+
+        public async Task<ICollection<Person>> FindAll()    
         {
             List<Person> people = await _context.People.ToListAsync();
             return people;

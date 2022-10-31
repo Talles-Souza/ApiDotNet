@@ -56,6 +56,10 @@ namespace Application.Service
             return ResultService.Ok("Person with the id : " + id + " was successfully deleted");
         }
 
-
+        public PersonDTO Disable(int id)
+        {
+            var personEntity = _personRepository.Disable(id);
+            return _mapper.Map<PersonDTO>(personEntity);
+        }
     }
 }

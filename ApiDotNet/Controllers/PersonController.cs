@@ -67,5 +67,14 @@ namespace ApiDotNet.Controllers
             if (result.IsSuccess) return Ok(result);
             return BadRequest(result);
         }
+
+        [HttpPatch("{id}")]
+        [ProducesResponseType((200), Type = typeof(PersonDTO))]
+        public  IActionResult Disable(int id)
+        {
+            var result =  _personService.Disable(id);
+            return Ok(result);
+            
+        }
     }
 }

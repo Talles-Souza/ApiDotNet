@@ -13,7 +13,7 @@ namespace Domain.Repositories
         Task<ICollection<Person>> FindAll();
         Task<Person> FindById (int id);
         Task<Person> Update (Person person);
-        Person Disable(long id);    
+        Person Disable(int id);    
         Task<bool> Delete(int id);
 
     }

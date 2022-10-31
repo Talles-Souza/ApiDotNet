@@ -14,6 +14,7 @@ namespace Application.Service.Interface
         Task<ResultService<ICollection<PersonDTO>>> FindAll();
         Task<ResultService<PersonDTO>> FindById(int id);
         Task<ResultService<PersonDTO>> Update(PersonDTO personDTO);
+        PersonDTO Disable (int id);
         Task<ResultService> Delete(int id);
     }
 }

@@ -40,6 +40,10 @@ namespace Application.Service
             var data = await _personRepository.Update(persons);
             return ResultService.Ok(_mapper.Map<PersonDTO>(data));
         }
+        public List<PersonDTO> FindByName(string firstName)
+        {
+            return _mapper.Map<List<PersonDTO>>(_personRepository.FindByName(firstName));
+        }
         public async Task<ResultService<PersonDTO>> Create(PersonDTO personDTO)
         {
             if (personDTO == null) return ResultService.Fail<PersonDTO>("Object must be informed");
@@ -61,5 +65,7 @@ namespace Application.Service
             var personEntity = _personRepository.Disable(id);
             return _mapper.Map<PersonDTO>(personEntity);
         }
+
+        
     }
 }

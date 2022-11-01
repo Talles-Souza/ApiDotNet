@@ -14,7 +14,7 @@ namespace Domain.Repositories
         Task<Person> FindById (int id);
         Task<Person> Update (Person person);
         Person Disable(int id); 
-        List<Person> FindByName(string firstName, string secondName );
+        List<Person> FindByName(string firstName );
         Task<bool> Delete(int id);
 
     }

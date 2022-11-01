@@ -15,13 +15,13 @@ namespace Domain.Entities
         [Column("first_name")]
         [Required]
         [StringLength(150)]
-        public string FirstName { get; set; }
+        public string? FirstName { get; set; }
         [Column("Last_name")]
-        [Required]
+        //[Required]
         [StringLength(150)]
-        public string LastName { get; set; }
+        public string? LastName { get; set; }
         [Column("address")]
-        [Required]
+        //[Required]
         [StringLength(150)]
         public string Address { get; set; }
         [Column("gender")]

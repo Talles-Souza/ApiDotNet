@@ -76,5 +76,12 @@ namespace ApiDotNet.Controllers
             return Ok(result);
             
         }
+        [HttpGet("findByName")]
+        public   IActionResult FindById([FromQuery] string firstName)
+        {
+            var result =  _personService.FindByName(firstName);
+            if (result ==  null) return NotFound();
+            return Ok(result);
+        }
     }
 }

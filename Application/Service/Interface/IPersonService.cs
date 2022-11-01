@@ -12,6 +12,7 @@ namespace Application.Service.Interface
     {
         Task<ResultService<PersonDTO>> Create(PersonDTO personDTO);
         Task<ResultService<ICollection<PersonDTO>>> FindAll();
+        List<PersonDTO> FindByName(string firstName);  
         Task<ResultService<PersonDTO>> FindById(int id);
         Task<ResultService<PersonDTO>> Update(PersonDTO personDTO);
         PersonDTO Disable (int id);

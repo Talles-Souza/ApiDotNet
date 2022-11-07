@@ -8,8 +8,8 @@ namespace Application.DTO
 {
     public class FileDetailDTO
     {
-        string DocumentName { get; set; }   
-        string DocType { get; set; }   
-        string DocUrl { get; set; }   
+        public string? DocumentName { get; set; }
+        public string? DocType { get; set; }
+        public string? DocUrl { get; set; }
     }
 }

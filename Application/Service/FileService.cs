@@ -22,19 +22,35 @@ namespace Application.Service
 
         public Task<List<FileDetailDTO>> SaveFilesToDisk(IList<IFormFile> file)
         {
-
+            return null;
             
         }
 
-        public Task<FileDetailDTO> SaveFileToDisk(IFormFile file)
+        public async Task<FileDetailDTO> SaveFileToDisk(IFormFile file)
         {
             FileDetailDTO fileDetail = new FileDetailDTO();
+            
+            
             var fileType =  Path.GetExtension(file.FileName);
             var baseUrl = context.HttpContext.Request.Host;
+            
 
-            if(fileType.ToLower() == ".pdf" || fileType.ToLower() == ".jpg" ||
+            if (fileType.ToLower() == ".pdf" || fileType.ToLower() == ".jpg" ||
                 fileType.ToLower() == ".png" || fileType.ToLower() == ".jpeg" )
-            return fileDetail;
+            {
+                var docName = Path.GetFileName(file.FileName);
+                if(file != null && file.Length > 0)
+                {
+                   
+                    var destination = Path.Combine(basePath,"",docName);
+                    fileDetail.DocumentName = docName;
+                    fileDetail.DocType = fileType;
+                    fileDetail.DocUrl = Path.Combine(baseUrl + "/api/file/v1/"+ fileDetail.DocumentName);
+                    using var stream = new FileStream(destination, FileMode.Create);
+                    await file.CopyToAsync(stream);
+                }
+            }
+            return null;
         }
     }
 }

@@ -21,10 +21,12 @@ namespace ApiDotNet.Controllers
         [ProducesResponseType((200), Type = typeof(FileDetailDTO))]
         [ProducesResponseType(400)]
         [ProducesResponseType(401)]
-        public async Task<IActionResult> UploadOneFile([FromForm] IFormFile file)
+        [Produces("application/json")]
+        public async Task<ActionResult> UploadOneFile([FromForm] IFormFile file)
         {
             FileDetailDTO detail = await _fileService.SaveFileToDisk(file);
-            return new OkObjectResult(detail);
+
+            return new  OkObjectResult(detail);
         }
     }
 }

@@ -45,12 +45,12 @@ namespace Application.Service
                     var destination = Path.Combine(basePath,"",docName);
                     fileDetail.DocumentName = docName;
                     fileDetail.DocType = fileType;
-                    fileDetail.DocUrl = Path.Combine(baseUrl + "/api/file/v1/"+ fileDetail.DocumentName);
+                    fileDetail.DocUrl = Path.Combine(baseUrl + "/api/File/uploadFile/" + fileDetail.DocumentName);
                     using var stream = new FileStream(destination, FileMode.Create);
                     await file.CopyToAsync(stream);
                 }
             }
-            return null;
+            return fileDetail;
         }
     }
 }

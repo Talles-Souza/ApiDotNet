@@ -23,4 +23,8 @@
     <ProjectReference Include="..\InfraIOC\InfraIOC.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="UploadDir\" />
+  </ItemGroup>
+
 </Project>

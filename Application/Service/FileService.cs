@@ -22,12 +22,19 @@ namespace Application.Service
 
         public Task<List<FileDetailDTO>> SaveFilesToDisk(IList<IFormFile> file)
         {
-            throw new NotImplementedException();
+
+            
         }
 
         public Task<FileDetailDTO> SaveFileToDisk(IFormFile file)
         {
-            throw new NotImplementedException();
+            FileDetailDTO fileDetail = new FileDetailDTO();
+            var fileType =  Path.GetExtension(file.FileName);
+            var baseUrl = context.HttpContext.Request.Host;
+
+            if(fileType.ToLower() == ".pdf" || fileType.ToLower() == ".jpg" ||
+                fileType.ToLower() == ".png" || fileType.ToLower() == ".jpeg" )
+            return fileDetail;
         }
     }
 }

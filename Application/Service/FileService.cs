@@ -20,9 +20,14 @@ namespace Application.Service
             throw new NotImplementedException();
         }
 
-        public Task<List<FileDetailDTO>> SaveFilesToDisk(IList<IFormFile> file)
+        public async Task<List<FileDetailDTO>> SaveFilesToDisk(IList<IFormFile> files)
         {
-            return null;
+            List<FileDetailDTO> list = new List<FileDetailDTO>();
+            foreach (var file in files)
+            {
+                list.Add(await SaveFileToDisk(file));
+            }  
+            return list;
             
         }
 

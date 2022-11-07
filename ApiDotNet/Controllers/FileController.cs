@@ -28,5 +28,16 @@ namespace ApiDotNet.Controllers
 
             return new  OkObjectResult(detail);
         }
+        [HttpPost("uploadMultipleFiles")]
+        [ProducesResponseType((200), Type = typeof(List<FileDetailDTO>))]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(401)]
+        [Produces("application/json")]
+        public async Task<ActionResult> UploadManyFiles([FromForm] List<IFormFile> files)
+        {
+            List<FileDetailDTO> details = await _fileService.SaveFilesToDisk(files);
+
+            return new  OkObjectResult(details);
+        }
     }
 }

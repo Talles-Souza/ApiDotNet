@@ -17,7 +17,9 @@ namespace Application.Service
 
         public byte[] GetFile(string fileName)
         {
-            throw new NotImplementedException();
+            var filePath = basePath+ fileName;  
+
+            return File.ReadAllBytes(filePath);
         }
 
         public async Task<List<FileDetailDTO>> SaveFilesToDisk(IList<IFormFile> files)

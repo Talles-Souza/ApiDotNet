@@ -28,8 +28,10 @@ namespace ApiDotNet.Controllers
 
             return new  OkObjectResult(detail);
         }
+
         [HttpPost("uploadMultipleFiles")]
         [ProducesResponseType((200), Type = typeof(List<FileDetailDTO>))]
+        [ProducesResponseType(204)]
         [ProducesResponseType(400)]
         [ProducesResponseType(401)]
         [Produces("application/json")]
@@ -38,6 +40,24 @@ namespace ApiDotNet.Controllers
             List<FileDetailDTO> details = await _fileService.SaveFilesToDisk(files);
 
             return new  OkObjectResult(details);
+        }
+
+        [HttpGet("downloadFile/{fileName}")]
+        [ProducesResponseType((200), Type = typeof(byte[]))]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(401)]
+        [Produces("application/octet-stream")]
+        public async Task<ActionResult> GetFileAsync(string fileName)
+        {
+            byte[] buffer  =  _fileService.GetFile(fileName);
+            if (buffer != null)
+            {
+                HttpContext.Response.ContentType = 
+                    $"application/{Path.GetExtension(fileName).Replace(".", "")}";
+                HttpContext.Response.Headers.Add("content-length", buffer.Length.ToString());
+                await HttpContext.Response.Body.WriteAsync(buffer, 0, buffer.Length); 
+            }
+            return new ContentResult();
         }
     }
 }

@@ -72,6 +72,7 @@ namespace Data.Repositories
            var user = _context.Users.FirstOrDefault(u => u.UserName == userName);
             if (user is null) return false;
             user.RefreshToken = null;
+            user.AccessToken = null;
             _context.SaveChanges();
             return true;
             

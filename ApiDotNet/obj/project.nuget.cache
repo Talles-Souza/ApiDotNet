@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "9L4HDagyG/4zYBBbH4PsqpIv9rtLz+0zi2qUANqGTvjH45HE78u7sA2CnYpYCHxgqaMR7IbpowYLJZ6N8lsatw==",
+  "dgSpecHash": "d160qO6cA1l4cBX9j9+ts0Gsjj51XUMHilAPnCs0FgcVz9sODGnt8tlSdF0xjZsZhEFp0ELOG2y3bM4m031ArQ==",
   "success": true,
   "projectFilePath": "C:\\C#\\DotNetCore\\ApiDotNet\\ApiDotNet.csproj",
   "expectedPackageFiles": [
@@ -58,6 +58,7 @@
     "C:\\Users\\talles\\.nuget\\packages\\microsoft.identitymodel.tokens\\6.10.0\\microsoft.identitymodel.tokens.6.10.0.nupkg.sha512",
     "C:\\Users\\talles\\.nuget\\packages\\microsoft.net.http.headers\\2.2.0\\microsoft.net.http.headers.2.2.0.nupkg.sha512",
     "C:\\Users\\talles\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\talles\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.17.0\\microsoft.visualstudio.azure.containers.tools.targets.1.17.0.nupkg.sha512",
     "C:\\Users\\talles\\.nuget\\packages\\microsoft.win32.systemevents\\6.0.0\\microsoft.win32.systemevents.6.0.0.nupkg.sha512",
     "C:\\Users\\talles\\.nuget\\packages\\mysqlconnector\\2.1.2\\mysqlconnector.2.1.2.nupkg.sha512",
     "C:\\Users\\talles\\.nuget\\packages\\pomelo.entityframeworkcore.mysql\\6.0.2\\pomelo.entityframeworkcore.mysql.6.0.2.nupkg.sha512",
